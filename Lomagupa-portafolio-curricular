@@ -1,1 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lorena Gutiérrez Pacheco | Portafolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
 
+    <header>
+        <h1>Lorena Margarita Gutiérrez Pacheco</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">Acerca de Mí</a></li>
+                <li><a href="#projects">Proyectos</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="welcome">
+        <h2>¡Bienvenido!</h2>
+        <p>Soy licenciada en Negocios Internacionales y actualmente estudio una Maestría en Administración y Dirección de Empresas. Explora mi trayectoria y proyectos.</p>
+    </section>
+
+    <section id="about">
+        <h2>Acerca de Mí</h2>
+        <p>He trabajado en comercio internacional, administración y emprendimiento. Mi experiencia incluye compras y negociaciones en la industria maquiladora, gestión académica y desarrollo de negocios en EE.UU.</p>
+    </section>
+
+    <section id="projects">
+        <h2>Proyectos</h2>
+
+        <div class="project">
+            <img src="imagenes/proyecto1.jpg" alt="Proyecto de Titulación">
+            <h3>Apoyo en Proyectos de Titulación</h3>
+            <p>Coordinación, supervisión y papel de sinodal en proyectos de titulación a nivel licenciatura.</p>
+        </div>
+
+        <div class="project">
+            <img src="imagenes/proyecto2.jpg" alt="Expansión de Mercados">
+            <h3>Expansión de Mercados para Productores Locales</h3>
+            <p>Negociaciones con importadores americanos para apoyar a productores locales en mercados internacionales.</p>
+        </div>
+
+        <div class="project">
+            <img src="imagenes/proyecto3.jpg" alt="Promoción Cultural">
+            <h3>Promoción Cultural y Gastronómica</h3>
+            <p>Elaboración e implementación de muestras gastronómicas, jornadas culturales y académicas.</p>
+        </div>
+
+    </section>
+
+    <section id="contact">
+        <h2>Contacto</h2>
+        <form id="contactForm" action="https://formspree.io/f/tu_formspree" method="POST">
+            <input type="text" name="name" placeholder="Tu Nombre" required>
+            <input type="email" name="email" placeholder="Tu Correo" required>
+            <textarea name="message" placeholder="Tu Mensaje" required></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+        <p id="formMessage"></p>
+    </section>
+
+</body>
+</html>
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f8ff;
+    color: #333;
+}
+
+header {
+    background-color: #0044cc;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #ffcc00;
+}
+
+section {
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+    text-align: center;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.project {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #e6f2ff;
+    border-left: 5px solid #0044cc;
+}
+
+.project img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 0 auto;
+}
+
+input, textarea {
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 10px;
+    background-color: #0044cc;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0033a0;
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("contactForm");
+    const formMessage = document.getElementById("formMessage");
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        
+        const formData = new FormData(form);
+        const name = formData.get("name");
+        const email = formData.get("email");
+        const message = formData.get("message");
+
+        if (name && email && message) {
+            formMessage.textContent = "Mensaje enviado con éxito.";
+            formMessage.style.color = "green";
+            form.reset();
+        } else {
+            formMessage.textContent = "Por favor, completa todos los campos.";
+            formMessage.style.color = "red";
+        }
+    });
+});
